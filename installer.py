@@ -26,10 +26,14 @@ else:
 path=os.getcwd()
 with open("febrev.sh","w+") as fr:
       fr.write(f"python3 {path}/febrev-venom.py")
-os.system(f"cp {path}/febrev.sh /bin/febrev1")
-os.system("chmod +x /bin/febrev.sh")
+os.system(f"cp {path}/febrev.sh /bin/febrev")
+os.system("chmod +x /bin/febrev")
 print("")
-print("NOW YOU CAN RUN FEBREV-VENOM FROM ANYWERE BY TYPING   >> ./febrev.sh")
+print("NOW YOU CAN RUN FEBREV-VENOM FROM ANYWERE BY TYPING COMMAND  >>  febrev")
+exiting=input("ENTER ANY KEY TO CONTINUE.......!!!!! ")
+print(" ")
+print(" ")
+print(" ")
 
 
 
