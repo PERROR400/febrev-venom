@@ -1,5 +1,8 @@
 # febrev-venom
-FEBREV venom is a tool to create android RATs through metasploit and send it to the victim via a link url
+FEBREV venom is a tool to create android RATs through metasploit , signs the RAT apk ,  and send it to the victim via a link url over the INTERNET
+
+
+
 *must run as root
 *must run in debian-based linux distro like kali
 #################################################################################################################
