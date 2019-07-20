@@ -4,7 +4,9 @@ FEBREV venom is a tool to create android RATs through metasploit and send it to 
 *must run in debian-based linux distro like kali
 #################################################################################################################
  USAGE:
+   
    **come into the febrev-venom directory 
+  
    chmod +x * 
    
    python3 installer.py
