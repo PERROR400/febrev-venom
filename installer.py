@@ -20,4 +20,5 @@ if python3=="n" or python3=="N":
 
 
 print("STARTING FEBREV VENOM......#######################")
+os.system("chmod +x *")
 os.system("sudo python3 febrev-venom.py")
