@@ -120,6 +120,7 @@ def venom():
            print("  ")
            print(" ")
            print(" ")
+           os.system("service apache2 start")
            os.system(f"pagekite {pkname}.pagekite.me")
       else:
            print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT using NGROK....")
