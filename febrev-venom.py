@@ -9,7 +9,7 @@ print("""
                                                                                    
                                                                                                                                         
                                                                  
-                    =====>>> coded by FEBIN REV                                                                                             
+                     =====>>> coded by FEBIN REV                                                                                             
      
  """)
 print("""[1]android/meterpreter/reverse_tcp
