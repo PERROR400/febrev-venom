@@ -152,7 +152,7 @@ def venom():
                    print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
                    os.system("./ngrok http 80")
                else:
-                   print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...)
+                   print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
                    print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
                    input("ENTER TO CONTINUE , LOGIN :")
                    webbrowser.open("https://dashboard.ngrok.com/login")
