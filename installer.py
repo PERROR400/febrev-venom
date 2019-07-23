@@ -1,5 +1,5 @@
 import os
-
+os.system("sudo apt-get install sl") 
 metasploit=input("IS METASPLOIT-FRAMEWORK ALREADY INSTALLED IN YOUR SYSTEM ? [Y/n] : ")
 if metasploit=="n" or metasploit=="N":
             os.sytem("sudo apt-get install metasploit")
