@@ -1,6 +1,6 @@
 import os
 import webbrowser
-os.system('echo -e "\033[1m \e[33m WELCOME TO FEBREV VENOM"')
+os.system('echo "\033[1m \e[33m WELCOME TO FEBREV VENOM"')
 print("""
   ______ ______ ____  _____  ________      __ __      ________ _   _  ____  __  __ 
  |  ____|  ____|  _ \|  __ \|  ____\ \    / / \ \    / /  ____| \ | |/ __ \|  \/  |
@@ -14,7 +14,7 @@ print("""
                      =====>>> coded by FEBIN REV                                                                                             
      
  """)
-os.system('echo -e "\033[1m \e[32m "programmed by FEBIN"')
+os.system('echo "\033[1m \e[32m "programmed by FEBIN"')
 print("""[1]android/meterpreter/reverse_tcp
 [2]android/meterpreter/reverse_http
 [3]android/meterpreter/reverse_https
