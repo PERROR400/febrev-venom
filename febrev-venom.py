@@ -14,7 +14,7 @@ print("""
                      =====>>> coded by FEBIN REV                                                                                             
      
  """)
-os.system('echo -e "\033[1m \e[32m "programmed by FEBIN"')
+os.system('echo -e "\033[1m \e[32m programmed by FEBIN"')
 print("""[1]android/meterpreter/reverse_tcp
 [2]android/meterpreter/reverse_http
 [3]android/meterpreter/reverse_https
