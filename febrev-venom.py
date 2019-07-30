@@ -206,7 +206,7 @@ def venom():
            """)
            listenport=input("ENTER THE LPORT: ")
            print("ctrl-c to stop listener")
-           os.system(f"nc -lvp {listenerport}")
+           os.system(f"nc -lvp {listenport}")
            print("######HAPPY HACKING##########")
         elif listener==2:
              print("ENTER THE BELOW COMMANDS ONE BY ONE IN METASPLOIT")
