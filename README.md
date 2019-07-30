@@ -1,6 +1,6 @@
 # febrev-venom
 FEBREV venom is a tool to create android RATs through metasploit , signs the RAT apk ,  and send it to the victim via a link url over the INTERNET
-
+CAN BYPASS GOOGLE PLAY PROTECT.............
 
 
 *must run as root
