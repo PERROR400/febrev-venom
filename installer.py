@@ -1,4 +1,5 @@
 import os
+os.system("rm /bin/febrev")
 os.system("sudo apt-get install sl") 
 metasploit=input("IS METASPLOIT-FRAMEWORK ALREADY INSTALLED IN YOUR SYSTEM ? [Y/n] : ")
 if metasploit=="n" or metasploit=="N":
