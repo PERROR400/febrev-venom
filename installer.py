@@ -32,7 +32,7 @@ else:
      print("NICE .....")
      
 
-python3=input("IS openssh INSTALLED IN YOUR SYSTEM? [Y/n] : ")
+openssh=input("IS openssh INSTALLED IN YOUR SYSTEM? [Y/n] : ")
 if openssh=="n" or openssh=="N":
            os.system("sudo apt-get install openssh")
 
