@@ -1,6 +1,21 @@
 import os
 os.system("rm /bin/febrev")
-os.system("sudo apt-get install sl") 
+print("""
+███████╗███████╗██████╗ ██████╗ ███████╗██╗   ██╗                     
+██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║   ██║                     
+█████╗  █████╗  ██████╔╝██████╔╝█████╗  ██║   ██║                     
+██╔══╝  ██╔══╝  ██╔══██╗██╔══██╗██╔══╝  ╚██╗ ██╔╝                     
+██║     ███████╗██████╔╝██║  ██║███████╗ ╚████╔╝                      
+╚═╝     ╚══════╝╚═════╝ ╚═╝  ╚═╝╚══════╝  ╚═══╝                       
+                                                                      
+██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ███████╗██████╗ 
+██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██╔════╝██╔══██╗
+██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     █████╗  ██████╔╝
+██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██╔══╝  ██╔══██╗
+██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗███████╗██║  ██║
+╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝
+                                                                      
+""")
 metasploit=input("IS METASPLOIT-FRAMEWORK ALREADY INSTALLED IN YOUR SYSTEM ? [Y/n] : ")
 if metasploit=="n" or metasploit=="N":
             os.sytem("sudo apt-get install metasploit")
@@ -14,9 +29,9 @@ else:
      print("NICE .....")
      
 
-python3=input("IS PYTHON3 INSTALLED IN YOUR SYSTEM? [Y/n] : ")
-if python3=="n" or python3=="N":
-           os.system("sudo apt-get install python3")
+python3=input("IS openssh INSTALLED IN YOUR SYSTEM? [Y/n] : ")
+if openssh=="n" or openssh=="N":
+           os.system("sudo apt-get install openssh")
 
 apache=input("IS APACHE2 SERVER IS INSTALLED IN YOUR SYSTEM? [Y/n] : ")
 if apache=="n" or apache=="N":
