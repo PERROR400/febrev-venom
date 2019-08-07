@@ -19,15 +19,16 @@ print("""
 echo="echo -e"
 colour="\033[1m \e[32m programmed by FEBIN"
 os.system('echo -e "\033[1m \e[32m programmed by FEBIN"')
-print("")
-print("""[1]android/meterpreter/reverse_tcp
-
-[2]android/meterpreter/reverse_http
-
-[3]android/meterpreter/reverse_https
-
-[4]Android payload works over internet(port forwarding using ssh)
-
+print("""
+**********************************************************************|
+[1]android/meterpreter/reverse_tcp                                    |
+**********************************************************************|
+[2]android/meterpreter/reverse_http                                   |
+**********************************************************************|
+[3]android/meterpreter/reverse_https                                  |
+**********************************************************************|
+[4]Android payload works over internet(port forwarding using ssh)     |
+**********************************************************************|
 """)
 payload=click.prompt("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE (default reverse_tcp): ", type=int, default=1)
 output=click.prompt("ENTER THE PATH OF YOUR OUTPUT APK (example : /root/Desktop)[default /root/]: ", type=str, default="/root")
